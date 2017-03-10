@@ -1,0 +1,21 @@
+Quickstart
+
+`$ gem install 'eventmachine'`
+`$ irb -r ./bootstrap.rb`
+`> Bootstrap.boot # start the child processes`
+`> Bootstrap.kill_random # kill random process`
+`> Bootstrap.stop # stop all processes`
+
+To use without the Bootstrap thing just initialize Agent with params and config,
+where config follows the style of config.rb and params is a single item in the
+config array representing the parameters of the instance you want to start. If
+you want to start it on the local machine you'll want to replace params[:ip]
+with just 127.0.0.1
+
+Decisions:
+- used different ports instead of ips since the logic should be the same but it
+is much easier for me to set up processes on different ports vs different ips
+- the output file is status#{id} instead of just status - this allows me to run
+them all from the same folder
+- I chose to use the gem 'eventmachine' because it seemed perfect for the solution
+which required event-driven logic.
